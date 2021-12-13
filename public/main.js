@@ -46,7 +46,7 @@ socket.on('messageNotification', socket => { // en el socket vienen tres objetos
       `
   })
   injectedMessages.innerHTML = messageList
-  compression.innerHTML = `${Math.floor(compressedPercentage,2)} %`
+  compression.innerHTML = `${Math.floor(compressedPercentage)} %`
 
 
 })
