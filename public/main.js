@@ -30,10 +30,19 @@ function messageSend(e) {
   socket.emit('messageNotification', messageNotification)
 };
 
-socket.on('messageNotification', socket => {
+socket.on('messageNotification', socket => { // en el socket vienen tres objetos: "data" normalizada desde el back, el "mensajesSchema" para desnormalizar y "dataSinNormalizar" para poder mostrar la lista, porque no me funciona la desnormalizacion
 
+      
+// como no me funciona y para poder mostrar los datos originales sin normalizar, hago esto:
+    console.log(socket)
+      
+      let {normalizedData, denormalizedData, mensajesSchema} = {...socket}
+
+      // let denormalizedData = normalizr.denormalize(socket.data.result, socket.mensajesSchema, socket.data.entities)
+      
+      
       let messageList=''
-      socket.forEach(message=>{
+      denormalizedData.forEach(message=>{
           messageList += `<span class="author">${message.author.id_author}</span><span class="moment">${message.moment.day}/${message.moment.month}/${message.moment.year}--${message.moment.hour}:${message.moment.minute}:${message.moment.second}</span> <span class="text"> ${message.text}</span> <img src="${message.author.avatar}" alt="missing" width="30" height="30"/></br>
       `
   })

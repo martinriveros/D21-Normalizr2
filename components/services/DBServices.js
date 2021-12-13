@@ -1,5 +1,5 @@
 const { messagesModel : db } = require('../../config/db')
-
+const normalizar = require('./normalizr')
 
 class DBServices{
     
@@ -16,7 +16,10 @@ class DBServices{
         readMessages = async () => {
             try {
                 let messages = await db.find()
-                return messages
+                console.log(normalizar(messages))
+                let {normalizedData, denormalizedData, mensajesSchema} = normalizar(messages)
+                return {normalizedData, denormalizedData, mensajesSchema}
+                
             } catch (error) {
                 console.log('error en la lectura de mensajes' + error)
             }
