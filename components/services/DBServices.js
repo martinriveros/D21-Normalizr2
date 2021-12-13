@@ -16,9 +16,8 @@ class DBServices{
         readMessages = async () => {
             try {
                 let messages = await db.find()
-                console.log(normalizar(messages))
-                let {normalizedData, denormalizedData, mensajesSchema} = normalizar(messages)
-                return {normalizedData, denormalizedData, mensajesSchema}
+                let {normalizedData, denormalizedData, mensajesSchema, compressedPercentage} = normalizar(messages)
+                return {normalizedData, denormalizedData, mensajesSchema, compressedPercentage}
                 
             } catch (error) {
                 console.log('error en la lectura de mensajes' + error)

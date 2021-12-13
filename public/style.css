@@ -11,3 +11,7 @@
     color: brown;
     font-weight: bold
 }
+.contenedor{
+    height: auto;
+    width: 300px;
+}

@@ -3,6 +3,7 @@ let form = document.querySelector('#messageForm')
 form.addEventListener("submit", messageSend);
 
 let injectedMessages = document.querySelector('#injectedMessages')
+let compression = document.querySelector('.compression')
 
 function messageSend(e) {
   e.preventDefault()
@@ -34,9 +35,8 @@ socket.on('messageNotification', socket => { // en el socket vienen tres objetos
 
       
       // como no me funciona la desnormalizacion y para poder mostrar los datos originales sin normalizar, hago esto:
-      console.log(socket)
       
-      let {normalizedData, denormalizedData, mensajesSchema} = {...socket}
+      let {normalizedData, denormalizedData, mensajesSchema, compressedPercentage} = {...socket}
 
       // let denormalizedData = normalizr.denormalize(socket.data.result, socket.mensajesSchema, socket.data.entities)
             
@@ -46,5 +46,8 @@ socket.on('messageNotification', socket => { // en el socket vienen tres objetos
       `
   })
   injectedMessages.innerHTML = messageList
+  compression.innerHTML = `${Math.floor(compressedPercentage,2)} %`
+
+
 })
 
