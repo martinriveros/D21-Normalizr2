@@ -1,9 +1,9 @@
 let mongoose = require('mongoose')
 let {Schema} = mongoose
 
-const MONGO_DB = process.env.MONGO_DB_URI;
-const DB_NAME = process.env.DB_NAME;
-const CONNECT = `${MONGO_DB}/${DB_NAME}`
+
+
+const CONNECT = process.env.MONGO_DB_URI
 
 let connection = null;
 
