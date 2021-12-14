@@ -1,8 +1,6 @@
 let mongoose = require('mongoose')
 let {Schema} = mongoose
 
-
-
 const CONNECT = process.env.MONGO_DB_URI
 
 let connection = null;
