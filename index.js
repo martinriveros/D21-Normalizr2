@@ -5,11 +5,10 @@ const path = require('path')
 const cors = require ('cors');
 const {Server: HttpServer} = require('http')    // los modulos tienen la clase Server, se renombra.
 const {Server: IOServer} = require('socket.io');// los modulos tienen la clase Server, se renombra.
-const {config, db}  = require('./config/index.js'); // no hace falta indicarle index.js, es por defecto.
+const {config}  = require('./config/index.js'); // no hace falta indicarle index.js, es por defecto.
 const serverRoutes = require('./routes/routes.js');
 const socketConnection = require('./components/services/socketServices.js')
-// const db_handler_products = require ('./controllers/controller.services.products.js')
-// const db_handler_messages = require ('./controllers/controller.services.messages.js');
+
 
 // inicializations
 const app = express();
@@ -29,9 +28,9 @@ app.use(express.urlencoded({extended:true}));         // interprets json format 
 
 app.use(cors(`${config.cors}`))                      // Middleware
 const PORT = config.port
-const HOST = db.host                             // Global variable
+                            // Global variable
 // Routes
 serverRoutes(app);
 socketConnection(io)
 
-httpServer.listen(PORT, HOST,  ()=>{console.log('server on fire, listening dotenv', PORT, HOST, config.email_support)});
+httpServer.listen(PORT,  ()=>{console.log('server on fire, listening dotenv', PORT, config.email_support)});

@@ -9,12 +9,13 @@ let config = {
   node_env:process.env.NODE_ENV !=='production',
 }
 
-let db = {
-    host: process.env.DB_HOST || '0.0.0.0' , // heroku detecta la url invalida y le asigna una
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-}
+// let db = {
+//     host: process.env.DB_HOST || '0.0.0.0' , // heroku detecta la url invalida y le asigna una
+//     port: process.env.DB_PORT,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME
+// }
 
-module.exports = { config, db}  
+
+module.exports = { config }  
