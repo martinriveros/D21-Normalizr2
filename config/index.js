@@ -17,4 +17,4 @@ let db = {
     database: process.env.DB_NAME
 }
 
-module.exports = { config, db}
+module.exports = { config, db}  
